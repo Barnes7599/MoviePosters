@@ -20,13 +20,13 @@ retrieved_date <- Sys.Date()
 
 fonts()
 # Import Rating Data ----
-df_rating <- read_tsv('title.ratings.tsv', na = "\\N", quote = '')
+df_rating <- read_tsv('https://datasets.imdbws.com/title.ratings.tsv.gz', na = "\\N", quote = '')
 
 # Import Basic Data ----
-df_basics <- read_tsv('title.basics.tsv', na = "\\N", quote = '')
+df_basics <- read_tsv('https://datasets.imdbws.com/title.basics.tsv.gz', na = "\\N", quote = '')
 
 #Import Actors Data ----
-df_actors <- read_tsv('name.basics.tsv', na = "\\N", quote = '') %>%
+df_actors <- read_tsv('https://datasets.imdbws.com/name.basics.tsv.gz', na = "\\N", quote = '') %>%
     filter(str_detect(primaryProfession, "actor|actress"))  %>%
     select(nconst, primaryName, birthYear)
 
@@ -35,7 +35,7 @@ df_rating_basics <-
 
 
 #Import Principals Data ----
-df_principals <- read_tsv('title.principals.tsv', na = "\\N", quote = '') %>%
+df_principals <- read_tsv('https://datasets.imdbws.com/title.principals.tsv.gz', na = "\\N", quote = '') %>%
     filter(str_detect(category, "actor|actress")) %>%
     select(tconst, ordering, nconst, category) %>%
     group_by(tconst) %>%
